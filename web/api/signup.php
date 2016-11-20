@@ -1,7 +1,7 @@
 <?php
 	
 	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	$response = array();
 	$name = $_POST["name"];
 	$user = $_POST["email"];
@@ -66,4 +66,5 @@ EOF;
    $db->close();
 
 	echo json_encode($response);
+
 ?>
