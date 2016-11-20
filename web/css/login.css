@@ -1,0 +1,38 @@
+.row {
+    background-color: lightblue;
+    background-clip: padding-box;
+    box-shadow: 10px 10px 5px #888888;
+    box-sizing:border-box;
+    width: 300px;
+    left: 50px;
+    position: relative;
+}
+
+.box {
+    display: inline-block;
+    width: 300px;
+}
+
+#login_box{
+	float: left;
+}
+
+#signup_box{
+	float: left;
+
+}
+
+.col-sm-10 {
+	display:block;
+    margin:0 auto;
+    width:80%;
+    height:80%;
+}
+
+label {
+    display: inline-block;
+}
+
+input{
+    display: inline-block;
+}
