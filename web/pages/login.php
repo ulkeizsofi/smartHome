@@ -1,9 +1,3 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
-   <script src="js/main.js"></script>
-
-</head>
-<body>
 <?php
     include "basic_menu.php"
   ?>
@@ -77,5 +71,3 @@
     </form>
   </div>
 </div>
-
-</body>

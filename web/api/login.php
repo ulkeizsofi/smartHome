@@ -28,8 +28,8 @@
       //echo "Opened database successfully\n";
    }	
    
-   $sql = "SELECT * from USER";
-  	$ret = $db->exec($sql);
+   $sql = "select Name, Password from USER where Name=\"".$user."\" and Password=\"".$password."\"";
+  	$ret = $db->querySingle($sql);
    if(!$ret){
       $response["status"] = "error";
       $response["reason"] = "user not found";
