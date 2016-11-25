@@ -42,9 +42,3 @@
       </div>
 </div>
 </div>
-
-<div>
-  <?php
-    include "thermo.php";
-  ?>
-</div>

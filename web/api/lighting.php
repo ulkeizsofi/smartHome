@@ -1,6 +1,8 @@
 <?php
-console.log("begin");
-$decoded = json_decode($_POST['data'],true);
-console.log("dec " + decoded);
-echo $decoded;
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	// $name = $_POST[];
+    $data = json_decode($_POST['name']);
+    $response = array();
+	echo $name;
 ?>

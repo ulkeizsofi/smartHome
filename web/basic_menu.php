@@ -6,7 +6,7 @@
 	  <a href="index.php?page=security">Security</a>
 	  <a href="index.php?page=leak_detection">Leak Detection</a>
 	  <a href="index.php?page=indoor_positioning">Indoor positioning</a>
-	  <a href="#">Settings</a>
+	  <a href="index.php?page=settings">Settings</a>
 </div>
 
 <div id="main">

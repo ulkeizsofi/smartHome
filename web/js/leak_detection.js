@@ -38,6 +38,12 @@ $(function(){
     $(id).css("width",percent);
     zone.innerHTML = percent;
     console.log(document.getElementById("progress-bar-area"));
+
+    document.forms["new_sens_form"]["name"].value = "";
+    document.forms["new_sens_form"]["min"].value = "";
+    document.forms["new_sens_form"]["max"].value = "";
+    document.forms["new_sens_form"]["low"].value = "";
+    document.forms["new_sens_form"]["high"].value = "";
   });
 });
 

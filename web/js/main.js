@@ -32,6 +32,8 @@ $(function(){
 		console.log(formData);
 	});
 });
+//	<h2><?php etrans("welcome"); ?></h2>
+
 
 $(function(){
 	$("#signup_btn").click(function(e){

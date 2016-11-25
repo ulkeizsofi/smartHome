@@ -90,71 +90,61 @@ $(function(){
         var type      = $(this).attr('data-type');
         var input = $("input[name='"+fieldName+"']");
         var currentVal = parseInt(input.val());
-        console.log(currentVal);
 
-        // xhttp.onreadystatechange() ={
-            
-        // }
+        var str = "{ temperature : " + currentVal + " }"
+        var temp_json = JSON.stringify({temperature: currentVal});
+        console.log("Here: " + temp_json);
 
-        // xhttp.open("POST", "/api/hvac_db.php", true);
-        // xhttp.send(temp);
+        $.ajax({
+          type: "POST",
+          url: "/api/temperature.php",
+          data: temp_json,
+          success: function(data) {
+                    console.log(data);
 
-        // $.post("/api/hvac_db.php",temp, function(data) {
-        //     console.log(data);
+            var response = JSON.parse(data);
+            console.log(data);
 
-        //     var response = JSON.parse(data);
-        //     console.log(data);
-
-        //     console.log(response);
-        //     if(response["status"] == "success") {
-        //         window.location.href = "index.php?page=hvac";           
-        //     }
-        //     else {
-        //         alert(response["reason"]);
-        //     }
-        //   }
-        // );
-
-        $.post(
-            "api/hvac_db.php",
-            {
-                temperature: 5
-            },
-            function(status){
-                alert(status);
+            console.log(response);
+            if(response["status"] == "success") {
+                alert(response["status"]);            }
+            else {
+                alert(response["reason"]);
             }
-        );
+          }
+      });
 
     });
 });
 
-// $(function(){
-//     $(".heating").click(function(e){
-//         var heating = document.getElementById("heating").checked;
-       
-//         console.log(heating);
+$(function(){
+    $(".switch input").change(function(e){
+        var id = $(this).attr("id");
+        var state = this.checked;
+        var obj = {'switch': id,'state':state };
+        console.log(obj);
+         $.ajax({
+            type: "POST",
+            url: "/api/hvac.php",
+            data: obj,
+            success: function(data) {
+                    console.log(data);
 
-//          $.ajax({
-//            type: "POST",
-//            url: "/api/hvac_db.php",
-//            data: heating,
-//           success: function(data) {
-//                     console.log(data);
+            var response = JSON.parse(data);
+            console.log(data);
 
-//             var response = JSON.parse(data);
-//             console.log(data);
+            console.log(response);
+            if(response["status"] == "success") {
+                alert(response["status"]);           
+            }
+            else {
+                alert(response["reason"]);
+            }
+          }
+      });
+       });
 
-//             console.log(response);
-//             if(response["status"] == "success") {
-//                 window.location.href = "index.php?page=hvac";           
-//             }
-//             else {
-//                 alert(response["reason"]);
-//             }
-//           }
-//        });
-
-//     });
+    });
 
 
 // });$(function(){

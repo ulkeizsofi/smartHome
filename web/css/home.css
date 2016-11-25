@@ -1,6 +1,7 @@
 .container{
 	height: 100%;
 	position: relative;
+
 }
 
 #menu{
@@ -13,7 +14,6 @@ body, html{
 }
 
 #menu {
-    background-color: lightblue;
    	
     width: 300px;
     left: 50px;
@@ -25,6 +25,9 @@ body, html{
 	  vertical-align: baseline;
 	  border-radius: .25em;
 	  height: 60%;
+}
+#menu ul {
+    background-color: lightblue;
 }
 
 

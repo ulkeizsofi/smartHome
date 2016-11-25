@@ -34,16 +34,49 @@ $(function(){
 });
 
 function sendToDB(name){
-	var data = "{'name':" + name + "}";
+	var data = "{'name':'RoomName1'}";
+	
 	console.log(data);
 	$.ajax({
 		type: "POST",
 		url:"/api/lighting.php",
 		data: data,
-    	contentType: "application/json",
     	success:function(data){
     		alert(data);
     	}
     }
 	);
 }
+
+
+// $(function(){
+//     $(".switch").click(function(e){
+//         var id = this.childNodes[1].id;
+//         var state = document.getElementById(id).checked;
+//         //console.log(state);
+//         var str = "{'switch' : " + id + ", 'state' : " + state + " }";
+//         var json = JSON.stringify(str);
+//         console.log(json);
+
+//          $.ajax({
+//             type: "POST",
+//             url: "/api/hvac.php",
+//             data: json,
+//             success: function(data) {
+//                     console.log(data);
+
+//             var response = JSON.parse(data);
+//             console.log(data);
+
+//             console.log(response);
+//             if(response["status"] == "success") {
+//                 alert(response["status"]);           
+//             }
+//             else {
+//                 alert(response["reason"]);
+//             }
+//           }
+//       });
+//        });
+
+//     });

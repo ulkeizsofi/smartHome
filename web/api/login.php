@@ -3,7 +3,7 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 	$response = array();
-	$user = $_POST["email"];
+	$user = $_POST["name"];
 	$password = $_POST["password"];
 
 	$response["status"] = "success";

@@ -1,7 +1,7 @@
 <div id="menuSidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	  <a href="index.php?page=home">Home</a>
-	  <a href="index.php?page=hvac">Settings</a>
+	  <a href="index.php?page=settings">Settings</a>
 	  <a href="index.php?page=login">Log out</a>
 	</div>
 

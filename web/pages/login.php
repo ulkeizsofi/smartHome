@@ -7,9 +7,9 @@
     <h2>Login</h2>
     <form class="form-horizontal">
       <div class="form-group">
-        <label class="control-label col-sm-2" for="email">Email:</label>
+        <label class="control-label col-sm-2" for="name">Name:</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
         </div>
       </div>
       <div class="form-group">
