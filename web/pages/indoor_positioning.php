@@ -3,11 +3,8 @@
 ?>
 
 <div>
-	<h1>Indoor positioning</h1>
-	<p>
-	You can register your gadgets here,<br/> 
-	clicking on the button it will make a sound <br/>
-	so you can easily find it.
+	<h1><?php etrans("indoor_positioning"); ?></h1>
+	<p><?php etrans("indoor_positioning_description"); ?>
 	</p>
 </div>
 
@@ -15,5 +12,5 @@
 </div>
 
 <div>
-	<button type="button" class="btn btn-primary" id="add-button-pos">Add Button</button>
+	<button type="button" class="btn btn-primary" id="add-button-pos"><?php etrans("add_switch"); ?></button>
 </div>

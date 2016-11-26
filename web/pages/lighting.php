@@ -3,9 +3,9 @@
 ?>
 
 <div>
-	<h1>Lighting control</h1>
+	<h1><?php etrans("lighting"); ?></h1>
 	<p>
-		You can easily add switch to each room of your house<br/> and control their state
+		<?php etrans("lighting_description"); ?>
 	</p>
 </div>
 
@@ -13,5 +13,5 @@
 </div>
 
 <div>
-	<button type="button" class="btn btn-primary" id="add-button">Add switch</button>
+	<button type="button" class="btn btn-primary" id="add-button"><?php etrans("add_switch"); ?></button>
 </div>

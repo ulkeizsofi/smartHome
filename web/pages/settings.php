@@ -4,11 +4,11 @@
 
 
 <div>
-  <h1>Settings<br/><br/><h1>
+  <h1><?php etrans("settings"); ?><br/><br/><h1>
 </div>
 
 <div>
-  <h2>Select Language<h2>
+  <h2><?php etrans("settings_language"); ?><h2>
 </div>
 
 <div class="language">
@@ -25,9 +25,9 @@
 </div>
 
 <div>
-  <h2>Sign out<h2>
+  <h2><?php etrans("settings_sign_out"); ?><h2>
 </div>
 
 <div class="sign-out">
-    <button class="btn primary-btn" id="log-out">Sign out</button>
+    <button class="btn primary-btn" id="log-out"><?php etrans("settings_sign_out"); ?></button>
 </div>

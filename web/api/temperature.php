@@ -42,10 +42,16 @@ EOF;
       die();
    } 
 
-   if (!$temp){
+   if ($temperature){
    $sql =
       "INSERT OR REPLACE INTO HVAC_TB (NAME,STATE) "
       ." VALUES ('temperature','".$temperature."' )";
+  }
+  else{
+       $response["status"] = "error";
+      $response["reason"] = "invalid data input";
+      echo json_encode($response);
+      die();
   }
 
   //echo $sql;

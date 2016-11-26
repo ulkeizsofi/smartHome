@@ -9,11 +9,11 @@
 	<div class="container">
 		<div id="menu">
 			<ul class="nav nav-pills nav-stacked">
-			  <li role="presentation"><a href="index.php?page=hvac">Heating, Ventilation, AC</a></li>
-			  <li role="presentation"><a href="index.php?page=lighting">Lighting control</a></li>
-			  <li role="presentation"><a href="index.php?page=security">Security</a></li>
-			  <li role="presentation"><a href="index.php?page=leak_detection">Leak Detection</a></li>
-			  <li role="presentation"><a href="index.php?page=indoor_positioning">Indoor positioning</a></li>
+			  <li role="presentation"><a href="index.php?page=hvac"><?php etrans("hvac"); ?></a></li>
+			  <li role="presentation"><a href="index.php?page=lighting"><?php etrans("lighting"); ?></a></li>
+			  <li role="presentation"><a href="index.php?page=security"><?php etrans("security"); ?></a></li>
+			  <li role="presentation"><a href="index.php?page=leak_detection"><?php etrans("leak_detection"); ?></a></li>
+			  <li role="presentation"><a href="index.php?page=indoor_positioning"><?php etrans("indoor_positioning"); ?></a></li>
 			</ul>
 		</div>
 	</div>

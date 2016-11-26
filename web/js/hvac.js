@@ -7,16 +7,13 @@ $( document ).ready(function() {
         var fieldName = $(this).attr('data-field');
         var type      = $(this).attr('data-type');
         var input = $("input[name='"+fieldName+"']");
-        console.log(input);
         var currentVal = parseInt(input.val());
-        console.log(currentVal);
         if (!isNaN(currentVal)) {
             if(type == 'minus') {
                 var minValue = parseInt(input.attr('min')); 
                 if(!minValue) minValue = 1;
                 if(currentVal > minValue) {
                     input.val(currentVal - 1).change();
-                    console.log("min");
                 } 
                 if(parseInt(input.val()) == minValue) {
                     $(this).attr('disabled', true);
@@ -27,7 +24,6 @@ $( document ).ready(function() {
                 if(!maxValue) maxValue = 9999999999999;
                 if(currentVal < maxValue) {
                     input.val(currentVal + 1).change();
-                                        console.log("max");
 
                 }
                 if(parseInt(input.val()) == maxValue) {
@@ -84,21 +80,18 @@ $( document ).ready(function() {
 });
 
 $(function(){
-    $(".btn-number").click(function(e){
+    $(".input-number").change(function(e){
         e.preventDefault();
-       var fieldName = $(this).attr('data-field');
-        var type      = $(this).attr('data-type');
-        var input = $("input[name='"+fieldName+"']");
-        var currentVal = parseInt(input.val());
+       
+        var currentVal =$(this).val();
 
-        var str = "{ temperature : " + currentVal + " }"
-        var temp_json = JSON.stringify({temperature: currentVal});
-        console.log("Here: " + temp_json);
+        var obj = { 'temperature' : currentVal };
+        console.log(obj);
 
         $.ajax({
           type: "POST",
           url: "/api/temperature.php",
-          data: temp_json,
+          data: obj,
           success: function(data) {
                     console.log(data);
 
@@ -107,7 +100,8 @@ $(function(){
 
             console.log(response);
             if(response["status"] == "success") {
-                alert(response["status"]);            }
+               //alert(response["status"]);            
+           }
             else {
                 alert(response["reason"]);
             }
@@ -135,7 +129,7 @@ $(function(){
 
             console.log(response);
             if(response["status"] == "success") {
-                alert(response["status"]);           
+               // alert(response["status"]);           
             }
             else {
                 alert(response["reason"]);
@@ -145,66 +139,37 @@ $(function(){
        });
 
     });
+window.onload = function(e){ 
+        var ids = ["hvac_tb","heating","ventillation","ac","temperature"];
+            //console.log(id);
+        var jsonArr = JSON.stringify(ids);
+            $.ajax({
+            type: "POST",
+            url: "/api/refresh.php",
+            data: {data:jsonArr},
+            success: function(data) {
 
+            var response = JSON.parse(data);
 
-// });$(function(){
-//     $(".ventillation").click(function(e){
-//         var ventillation = document.getElementById("ventillation").checked;
-       
-//         console.log(ventillation);
-
-//         // $.ajax({
-//         //   type: "POST",
-//         //   url: "/api/login.php",
-//         //   data: formData,
-//         //   success: function(data) {
-//         //             console.log(data);
-
-//         //     var response = JSON.parse(data);
-//         //     console.log(data);
-
-//         //     console.log(response);
-//         //     if(response["status"] == "success") {
-//         //         window.location.href = "index.php?page=home";           
-//         //     }
-//         //     else {
-//         //         alert(response["reason"]);
-//         //     }
-//         //   }
-//         //   // dataType: dataType
-//         // });
-
-//         // console.log(formData);
-//     });
-// });
-
-// $(function(){
-//     $(".ac").click(function(e){
-//         var ac = document.getElementById("ac").checked;
-       
-//         console.log(ac);
-
-//         // $.ajax({
-//         //   type: "POST",
-//         //   url: "/api/login.php",
-//         //   data: formData,
-//         //   success: function(data) {
-//         //             console.log(data);
-
-//         //     var response = JSON.parse(data);
-//         //     console.log(data);
-
-//         //     console.log(response);
-//         //     if(response["status"] == "success") {
-//         //         window.location.href = "index.php?page=home";           
-//         //     }
-//         //     else {
-//         //         alert(response["reason"]);
-//         //     }
-//         //   }
-//         //   // dataType: dataType
-//         // });
-
-//         // console.log(formData);
-//     });
-// });
+            if(response["status"] == "success") {
+                for(var i = 1; i < ids.length; i++){
+                    var el = document.getElementById(ids[i]);
+                    if (ids[i] == "temperature"){
+                        el.value = parseInt(response[ids[i]]);
+                    }
+                    else{
+                        if (response[ids[i]] == 0){
+                            el.checked = false;
+                        }
+                        else{
+                            el.checked = true;
+                        }
+                    }
+                }
+            }
+            else {
+                alert(response["reason"]);
+            }
+          }
+      });
+};
