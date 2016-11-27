@@ -40,9 +40,12 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS USER
-      (NAME           TEXT    NOT NULL,
-      EMAIL CHAR(100) PRIMARY KEY     NOT NULL,
-      PASSWORD        CHAR(50));
+      (ID       INTEGER   PRIMARY KEY  AUTOINCREMENT,
+      NAME        TEXT    NOT NULL,
+      EMAIL CHAR(100)    NOT NULL,
+      PASSWORD        CHAR(50)
+      );
+
 EOF;
 	//check if success
 	
@@ -50,6 +53,17 @@ EOF;
    if(!$ret){
       $response["status"] = "error";
       $response["reason"] = "cannot create table";
+      echo json_encode($response);
+      die();
+   } 
+   $sql =<<<EOF
+
+   CREATE UNIQUE INDEX IF NOT EXISTS NameUniqueIndex ON user (name)
+EOF;
+   $ret = $db->exec($sql);
+   if(!$ret){
+      $response["status"] = "error";
+      $response["reason"] = "cannot create index";
       echo json_encode($response);
       die();
    } 
@@ -61,7 +75,7 @@ EOF;
   $ret = $db->exec($sql);
    if(!$ret){
       $response["status"] = "error";
-      $response["reason"] = "cannot insert in the table";
+      $response["reason"] = "Cannot sign up! Probably the user already exists";
    } 
    $db->close();
 

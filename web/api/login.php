@@ -28,7 +28,7 @@
       //echo "Opened database successfully\n";
    }	
    
-   $sql = "select Name, Password from USER where Name=\"".$user."\" and Password=\"".$password."\"";
+   $sql = "select ID from USER where Name=\"".$user."\" and Password=\"".$password."\"";
   	$ret = $db->querySingle($sql);
    if(!$ret){
       $response["status"] = "error";
@@ -38,6 +38,10 @@
    } 
 
    $db->close();
+
+   //set the cookie
+   @session_start();
+   $_SESSION["usrID"] = $ret;
 
 	echo json_encode($response);
 ?>

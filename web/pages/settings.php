@@ -18,7 +18,7 @@
       value='en'
       >English</option>
       <option  
-      data-content='<span class="flag-icon flag-icon-mx"></span> Español' 
+      data-content='<span class="flag-icon flag-icon-mx"></span> Romanian' 
       value='ro'
       >Romanian</option>
   </select>
