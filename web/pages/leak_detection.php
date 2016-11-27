@@ -61,4 +61,7 @@
 
 <div id="progress-bar-area">
 	
+  <script>
+    loadLeakDetection();
+  </script>
 </div>

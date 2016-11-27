@@ -2,26 +2,21 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
 
-    $name = $_POST["name"];
     $state = $_POST["state"];
     if ($state == null){
-    	$stt = 0;
+    	$stt = 1;
     }
     else{
-    	if ($state == "true"){
-    		$stt = 1;
+    	if ($state == "false"){
+    		die();
     	}
     	else{
-    		$stt = 0;
+    		$stt = 1;
     	}
     }
     $response = array();
 
     $response["status"] = "success";
-    $data = array( "name" => $name,
-    				"state" => $stt
-    );
-
 
 	//open the database
 	class MyDB extends SQLite3
@@ -44,7 +39,7 @@
    }	
    
    $sql =<<<EOF
-      CREATE TABLE IF NOT EXISTS LIGHTING_TB
+      CREATE TABLE IF NOT EXISTS SECURITY_TB
       (NAME           TEXT  PRIMARY KEY   NOT NULL,
       STATE        CHAR(50));
 EOF;
@@ -58,10 +53,10 @@ EOF;
       die();
    } 
 
-   if ($data["name"] != NULL){
+   if ($stt != NULL){
    $sql =
-      "INSERT OR REPLACE INTO LIGHTING_TB (NAME,STATE) "
-      ." VALUES ('".$data["name"]."','".$data["state"]."' )";
+      "INSERT OR REPLACE INTO SECURITY_TB (NAME,STATE) "
+      ." VALUES ('security','".$stt."' )";
  	 }
     else {
       $response["status"] = "error";

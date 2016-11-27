@@ -12,4 +12,7 @@
     <input type="checkbox" class="security" id="security">
     <div class="slider round" ></div>
   </label>
+  <script>
+  	loadSecurity();
+  </script>
 </div>

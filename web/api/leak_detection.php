@@ -1,25 +1,23 @@
 <?php
 	error_reporting(E_ALL);
-	ini_set('display_errors', 0);
+	ini_set('display_errors', 1);
 
     $name = $_POST["name"];
-    $state = $_POST["state"];
-    if ($state == null){
-    	$stt = 0;
-    }
-    else{
-    	if ($state == "true"){
-    		$stt = 1;
-    	}
-    	else{
-    		$stt = 0;
-    	}
-    }
+    $min = $_POST["min"];
+    $max = $_POST["max"];
+    $low = $_POST["low"];
+    $high = $_POST["high"];
+    $value = $_POST["value"];
+
     $response = array();
 
     $response["status"] = "success";
     $data = array( "name" => $name,
-    				"state" => $stt
+    				"min" => $min,
+            "max" => $max,
+            "low" => $low,
+            "high" => $high,
+            "value" => $value
     );
 
 
@@ -44,9 +42,13 @@
    }	
    
    $sql =<<<EOF
-      CREATE TABLE IF NOT EXISTS LIGHTING_TB
+      CREATE TABLE IF NOT EXISTS LEAK_DETECTION_TB
       (NAME           TEXT  PRIMARY KEY   NOT NULL,
-      STATE        CHAR(50));
+      MIN        CHAR(50)    NOT NULL,
+      MAX        CHAR(50)    NOT NULL,
+      LOW        CHAR(50)    NOT NULL,
+      HIGH        CHAR(50)    NOT NULL,
+      VALUE        CHAR(50)    NOT NULL);
 EOF;
 	//check if success
 	
@@ -60,8 +62,8 @@ EOF;
 
    if ($data["name"] != NULL){
    $sql =
-      "INSERT OR REPLACE INTO LIGHTING_TB (NAME,STATE) "
-      ." VALUES ('".$data["name"]."','".$data["state"]."' )";
+      "INSERT OR REPLACE INTO LEAK_DETECTION_TB (NAME,MIN, MAX, LOW, HIGH, VALUE) "
+      ." VALUES ('".$data["name"]."','".$data["min"]."','".$data["max"]."', '".$data["low"]."', '".$data["high"]."', '".$data["value"]."' )";
  	 }
     else {
       $response["status"] = "error";

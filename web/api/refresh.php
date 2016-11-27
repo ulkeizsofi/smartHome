@@ -29,10 +29,25 @@
 	if ($ids[0] == "*"){
 			$sql = "select * from ".$table_name;
 			$ret = $db->query($sql);
-			//print_r($ret);
-			while ($row = $ret->fetchArray()) {
-    			//var_dump($row["NAME"]);
-				$response[$row["NAME"]] = $row["STATE"];
+			if ($ret){
+	    		if ($table_name == "leak_detection_tb"){
+					while ($row = $ret->fetchArray()) {
+	    				$list = array(
+	    						"MIN" => $row["MIN"],
+	    						"MAX" => $row["MAX"],
+	    						"LOW" => $row["LOW"],
+	    						"HIGH" => $row["HIGH"],
+								"VALUE" => $row["VALUE"]
+
+	    					); 
+	    				$response[$row["NAME"]] = $list;
+	    			}
+	    		}
+	    		else{
+					while ($row = $ret->fetchArray()) {
+						$response[$row["NAME"]] = $row["STATE"];
+					}
+				}
 			}
 	}
 	else{
