@@ -10,7 +10,9 @@
 
 <div id="button_area">
 </div>
-
+<script>
+loadIndoorPos();
+</script>
 <div>
 	<button type="button" class="btn btn-primary" id="add-button-pos"><?php etrans("add_switch"); ?></button>
 </div>
