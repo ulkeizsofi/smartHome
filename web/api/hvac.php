@@ -8,13 +8,7 @@
 	$state = $_POST["state"] == "true"?1:0;
    $data = array("switch" => $switch, "state" => $state);
 
-   $lang = array("welcome" => array("ro" => "Salut!", "en" => "Welcome!"));
-   $crtLang = "en";
-   function translate($id) {
-      return $lang[$id][$crtLang];
-   }
-
-
+   
    // echo json_encode(array("state" => $state));
 
 	$response["status"] = "success";

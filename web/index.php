@@ -27,7 +27,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body load = "RefreshWhenLoad()"">
+<body load = "RefreshWhenLoad()">
 
 	<div class="container">
 	<?php

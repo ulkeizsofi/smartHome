@@ -112,7 +112,7 @@ $(function(){
 });
 
 $(function(){
-    $(".switch input").change(function(e){
+    $(".switch input #hvac").change(function(e){
         var id = $(this).attr("id");
         var state = this.checked;
         var obj = {'switch': id,'state':state };
@@ -139,7 +139,7 @@ $(function(){
        });
 
     });
-window.onload = function(e){ 
+function loadHvac(){
         var ids = ["hvac_tb","heating","ventillation","ac","temperature"];
             //console.log(id);
         var jsonArr = JSON.stringify(ids);
@@ -148,7 +148,6 @@ window.onload = function(e){
             url: "/api/refresh.php",
             data: {data:jsonArr},
             success: function(data) {
-
             var response = JSON.parse(data);
 
             if(response["status"] == "success") {
@@ -159,17 +158,19 @@ window.onload = function(e){
                     }
                     else{
                         if (response[ids[i]] == 0){
-                            el.checked = false;
+                            if (el != null)
+                                el.checked = false;
                         }
                         else{
-                            el.checked = true;
+                            if (el != null)
+                                el.checked = true;
                         }
                     }
                 }
             }
             else {
-                alert(response["reason"]);
+               // alert(response["reason"]);
             }
           }
       });
-};
+  }

@@ -1,10 +1,12 @@
 <?php
   include "basic_menu.php";
 ?>
+<div id="hvac-window">
+  
 <div>
   <h1><?php etrans("heating"); ?></h1>
 
-  <label class="switch">
+  <label class="switch" id="hvac">
     <input type="checkbox" class="heating" id="heating">
     <div class="slider round" ></div>
   </label>
@@ -41,4 +43,8 @@
           </span>
       </div>
 </div>
+</div>
+<script>
+loadHvac();
+</script>
 </div>
