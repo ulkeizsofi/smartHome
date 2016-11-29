@@ -8,9 +8,9 @@
 
 <div id="switch_area">
 	<h2><?php etrans("security_state"); ?></h2>
-	<label class="switch">
-    <input type="checkbox" class="security" id="security">
-    <div class="slider round" ></div>
+	<label class="switch security" id="security">
+	    <input type="checkbox" class="security_switch" id="security_switch">
+    	<div class="slider round" id="security"></div>
   </label>
   <script>
   	loadSecurity();

@@ -112,7 +112,9 @@ $(function(){
 });
 
 $(function(){
-    $(".switch input #hvac").change(function(e){
+    $(".hvac_switch input").change(function(e){
+
+        console.log("Switched hvac");
         var id = $(this).attr("id");
         var state = this.checked;
         var obj = {'switch': id,'state':state };
