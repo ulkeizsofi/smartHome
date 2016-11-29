@@ -1,7 +1,6 @@
 <?php
 	@session_start();
 	include "translate/logic.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/lighting.css">
 	<link rel="stylesheet" type="text/css" href="/css/indoor_positioning.css">
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/css/security.css">
 	<script>var crtLang = "<?php echo getCurrentLanguage(); ?>";</script>
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -27,13 +27,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body load = "RefreshWhenLoad()">
+<body>
 
 	<div class="container">
-	<?php
-	 $page = $_GET["page"];
-	 include "pages/$page.php";
-	?>
+		<?php
+			if(!isset($_SESSION["usrID"])){
+				$page = $_GET["page"];
+				if ($page == "about")
+					include "pages/$page.php";
+				else{
+					$page = "login";
+					include "pages/$page.php";
+				}
+			}
+			else{
+				 $page = $_GET["page"];
+				 include "pages/$page.php";
+			}
+		?>
 	</div>
 
 </body>

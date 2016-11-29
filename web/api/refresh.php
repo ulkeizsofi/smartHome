@@ -27,7 +27,7 @@
 
 
 	if ($ids[0] == "*"){
-			$sql = "select * from ".$table_name;
+			$sql = "select * from ".$table_name." order by name asc";
 			$ret = $db->query($sql);
 			if ($ret){
 	    		if ($table_name == "leak_detection_tb"){

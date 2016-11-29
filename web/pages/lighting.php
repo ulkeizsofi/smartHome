@@ -11,7 +11,11 @@
 	</p>
 </div>
 <div id="switch_area">
+	<table>
+		<tbody >
 
+		</tbody>
+	</table>
 </div>
 <script>
     loadLighting();

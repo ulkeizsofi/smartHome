@@ -58,3 +58,8 @@ fieldset[disabled] .btn-primary.active {
 .panel-group{
   width: 40%;
 }
+
+#sensor-head{
+  position: relative;
+  display: inline-block;
+}

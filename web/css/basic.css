@@ -37,9 +37,11 @@ body {
     margin-left: 50px;
 }
 
-#main {
+.main {
     transition: margin-left .5s;
     padding: 16px;
+    z-index: 1;
+    position: relative;
 }
 
 @media screen and (max-height: 450px) {
@@ -53,4 +55,23 @@ body {
     background-position: center; 
     background-size: cover;
 
+}
+
+.lang {
+    
+    width: 90px;
+    z-index: 1;
+    position: relative;
+}
+.lang>* {
+    height: 35px;
+    width: 45px;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+.lang .ro {
+    background-image: url("images/ro.png");
+}
+.lang .en {
+    background-image: url("images/en.png");
 }

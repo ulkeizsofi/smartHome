@@ -6,6 +6,28 @@
     width: 300px;
     left: 50px;
     position: relative;
+    padding: 10px;
+}
+
+.login_row{
+    top: 10px;
+    position: absolute;
+    left: 200px
+}
+
+#login_container{
+    width: 30%;
+}
+
+#menu_container{
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+#menu_container .main>*{
+    font-size:30px;
+    cursor:pointer;
 }
 
 .box {

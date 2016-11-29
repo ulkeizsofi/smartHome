@@ -3,6 +3,21 @@
 
 $lang = array(
 	//A
+	"about" => array(
+		"ro" => "Despre",
+		"en" => "About"
+	),
+	"about_description" => array(
+		"ro" => "Pe această pagină poți ușor să ai acces la aproape orice <br/>
+				ceea ce se întâmplă în casa ta.<br/>
+				Adăugând sensori sau alte dispozitive poți controla temperatura, <br/>
+				sistemul de securitate, luminaozitatea și multe alte servicii<br/>
+				Înscrie-te și încearcă acum și tu acest comfort incredibil!",
+		"en" => "Here you can easily access almost everything from your home<br/>
+				Add some sensors or gadgets and you can control the temperature,<br/>
+				the security system, the lighting and so on.<br/>
+				Sign ap now and try this incredible comfort!"
+	),
 	"ac" => array(
 		"ro" => "Aer-condiționat",
 		"en" => "Air-conditioning"
@@ -76,7 +91,7 @@ $lang = array(
 	),
 	"leak_detection_add_sensor_submit" => array(
 		"ro" => "Adaugă",
-		"en" => "Submit:"
+		"en" => "Submit"
 	),
 	"lighting" => array(
 		"ro" => "Controlarea luminii",
@@ -85,6 +100,10 @@ $lang = array(
 	"lighting_description" => array(
 		"ro" => "Poți adăuga ușor întrerupătoare pentru fiecare cameră din casa ta<br/>și să urmărești starea lor",
 		"en" => "You can easily add switch to each room of your house<br/> and control their state"
+	),
+	"log_in" => array(
+		"ro" => "Înscrie-te acum!",
+		"en" => "Get started now!"
 	),
 	//M
 	//N

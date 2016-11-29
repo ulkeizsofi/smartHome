@@ -6,7 +6,7 @@
 
 <p><?php etrans("security_description"); ?></p>
 
-<div id="switch_area">
+<div id="switch_area" class="security">
 	<h2><?php etrans("security_state"); ?></h2>
 	<label class="switch security" id="security">
 	    <input type="checkbox" class="security_switch" id="security_switch">

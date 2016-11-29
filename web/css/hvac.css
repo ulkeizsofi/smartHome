@@ -143,3 +143,8 @@ fieldset[disabled] .btn-success.active {
   background-color: #2F4F4F;
   border-color: #255625;
 }
+
+.hvac-switch{
+  position:relative;
+  z-index: 8;
+}

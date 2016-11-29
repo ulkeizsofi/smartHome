@@ -35,33 +35,24 @@ function sendToDB(switch_name){
 
 function createSwitch(switch_name, value){
 
-		var div = document.createElement("DIV");
-		div.type = "switch";
+        var tr = $("<tr>");
+        tr.append("<td>" + switch_name + "</td>");
+        var label = $("<label>").addClass("switch");
+        var input = $("<input>").attr("type", "checkbox")
+                                .attr("id", switch_name)
+                                .on("change", switchChange)
+                                .prop("checked", value);
+        label.append(input).append("<div class='slider round'>");
 
-		var head1 = document.createElement("H1");
-		head1.innerHTML = switch_name;
+        tr.append($("<td>").append(label));
+        var btn = $("<button>").attr("class","btn btn-primary")
+                                .attr("type", "button")
+                                .attr("id", switch_name)
+                                .on("click",deleteSwitch)
+                                .html("X");
+        tr.append($("<td>").append(btn));
+        $("#switch_area tbody").append(tr);
 
-		var lab = document.createElement("LABEL");
-		lab.className="switch";
-		lab.id = "lighting";
-
-		var inp = document.createElement("INPUT");
-		inp.type="checkbox";
-		inp.onchange= switchChange;
-		
-		inp.id = switch_name;
-		inp.checked = value;
-
-		var toggle = document.createElement("DIV");
-		toggle.className="slider round";
-
-		lab.appendChild(inp);
-		lab.appendChild(toggle);
-		div.appendChild(head1);
-		div.appendChild(lab);
-
-
-		document.getElementById("switch_area").appendChild(div);
 
 }
 
@@ -113,4 +104,24 @@ function loadLighting(){
             }
           }
       });
-	}
+}
+
+function deleteSwitch(){
+    var id = $(this).attr('id');
+    var json = {"table_name":"lighting_tb","name":id};
+    $.ajax({
+        type:"POST",
+        url:"/api/delete.php",
+        data: json,
+        success: function(data){
+            console.log(data);
+            var response = JSON.parse(data);
+            if(response["status"] == "success") {
+                location.reload();
+            }
+            else {
+                alert(response["reason"]);
+            }
+        }
+    });
+}

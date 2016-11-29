@@ -37,7 +37,7 @@ body {
     margin-left: 50px;
 }
 
-#main {
+.main {
     transition: margin-left .5s;
     padding: 16px;
 }

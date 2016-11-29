@@ -1,13 +1,13 @@
 <?php
-	
 	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	$response = array();
-	$user = $_POST["name"];
-	$password = $_POST["password"];
+
+	$name = $_POST["name"];
+	$table_name = $_POST["table_name"];
 
 	$response["status"] = "success";
-	
+
 	//open the database
 	class MyDB extends SQLite3
    {
@@ -27,22 +27,20 @@
    } else {
       //echo "Opened database successfully\n";
    }	
-   
-  $sql = "select ID from USER where Name=\"".$user."\" and Password=\"".$password."\"";
-  	$ret = $db->querySingle($sql);
+
+   $sql ="DELETE FROM ".$table_name." WHERE NAME = \"".$name."\"";
+   //echo $sql;
+
+	//check if success
+	
+	$ret = $db->exec($sql);
    if(!$ret){
       $response["status"] = "error";
-      $response["reason"] = "user not found";
-		echo json_encode($response);
-		die();
+      $response["reason"] = "cannot delete from the table";
+      echo json_encode($response);
+      die();
    } 
 
    $db->close();
-
-   //set the cookie
-   @session_start();
-   $_SESSION["usrID"] = $ret;
-   //echo $_SESSION["usrID"];
-
-	echo json_encode($response);
+   echo json_encode($response);
 ?>

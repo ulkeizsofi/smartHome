@@ -12,6 +12,12 @@ $(function(){
 
 
     sendToDBLeakDet(name, min, max, low, high, value);
+
+        document.forms["new_sens_form"]["name"].value = "";
+    document.forms["new_sens_form"]["min"].value = "";
+    document.forms["new_sens_form"]["max"].value = "";
+    document.forms["new_sens_form"]["low"].value = "";
+    document.forms["new_sens_form"]["high"].value = "";
   });
 });
 
@@ -50,11 +56,21 @@ function createSensor(name, min, max, low, high, value){
     console.log(zone);
 
     var div = document.createElement("DIV");
+    var span = document.createElement("SPAN");
+    span.id = "sensor-head";
     var head1 = document.createElement("H1");
     head1.innerHTML = name;
+    var btn = document.createElement("BUTTON");
+    btn.className = "btn btn-primary";
+    btn.type = "button";
+    btn.id = name;
+    btn.innerHTML = "X";
+    btn.onclick = deleteSensor;
 
-    div.appendChild(head1);
+    span.appendChild(head1);
+    span.appendChild(btn);
     container.appendChild(zone);
+    div.appendChild(span);
     div.appendChild(container);
 
     document.getElementById("progress-bar-area").appendChild(div);
@@ -67,11 +83,7 @@ function createSensor(name, min, max, low, high, value){
     zone.innerHTML = percent;
     console.log(document.getElementById("progress-bar-area"));
 
-    document.forms["new_sens_form"]["name"].value = "";
-    document.forms["new_sens_form"]["min"].value = "";
-    document.forms["new_sens_form"]["max"].value = "";
-    document.forms["new_sens_form"]["low"].value = "";
-    document.forms["new_sens_form"]["high"].value = "";
+
 }
 
 function loadLeakDetection(){
@@ -90,8 +102,8 @@ function loadLeakDetection(){
                 $.each(response, function(key, value){
                     if (key != "status"){
 
-                        createSensor(key, parseInt(value["MIN"]), parseInt(value["MAX"]), parseInt(value["LOW"]),
-                         parseInt(value["HIGH"]), parseInt(value["VALUE"]));
+                        createSensor(key, parseFloat(value["MIN"]), parseFloat(value["MAX"]), parseFloat(value["LOW"]),
+                         parseFloat(value["HIGH"]), parseFloat(value["VALUE"]));
                     }
                 });
             }
@@ -100,4 +112,24 @@ function loadLeakDetection(){
             }
           }
       });
+}
+
+function deleteSensor(){
+    var id = $(this).attr('id');
+    var json = {"table_name":"leak_detection_tb","name":id};
+    $.ajax({
+        type:"POST",
+        url:"/api/delete.php",
+        data: json,
+        success: function(data){
+            console.log(data);
+            var response = JSON.parse(data);
+            if(response["status"] == "success") {
+                location.reload();
+            }
+            else {
+                alert(response["reason"]);
+            }
+        }
+    });
 }
