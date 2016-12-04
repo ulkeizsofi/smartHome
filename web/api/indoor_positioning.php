@@ -1,6 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
+  @session_start();
     $name = $_POST["name"];
     $response = array();
 
@@ -29,9 +30,9 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS INDOOR_POS_TB
-      (NAME           TEXT  PRIMARY KEY   NOT NULL,
-      STATE        CHAR(50)
-      );
+      (ID   INTEGER NOT NULL,
+      NAME           TEXT  PRIMARY KEY   NOT NULL,
+      STATE        CHAR(50));
 EOF;
 	//check if success
 	
@@ -45,8 +46,8 @@ EOF;
 
    if ($data["name"] != NULL){
    $sql =
-      "INSERT OR REPLACE INTO INDOOR_POS_TB (NAME, STATE) "
-      ." VALUES ('".$data["name"]."', NULL )";
+      "INSERT OR REPLACE INTO INDOOR_POS_TB (ID, NAME, STATE) "
+      ." VALUES (".$_SESSION["usrID"].",'".$data["name"]."', NULL )";
  	 }
     else {
       $response["status"] = "error";
@@ -56,7 +57,7 @@ EOF;
       die();
     }
 
-  //echo $sql;
+  // echo $sql;
 
   $ret = $db->exec($sql);
    if(!$ret){

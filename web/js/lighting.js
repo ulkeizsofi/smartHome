@@ -20,14 +20,10 @@ function sendToDB(switch_name){
 		url:"/api/lighting.php",
 		data: data,
     	success:function(response){
-    	// 	$data = JSON.parse(response);
-    	// 	if (data["status"] == "success"){
+
 
     			createSwitch(switch_name, false);
-    		// }
-    		// else{
-    		// 	alert("Cannot add switch\n" + data['reason']);
-    		// }
+    		 
     	}
     }
 	);

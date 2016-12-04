@@ -18,6 +18,10 @@ $lang = array(
 				the security system, the lighting and so on.<br/>
 				Sign ap now and try this incredible comfort!"
 	),
+	"about_log_in" => array(
+		"ro" => "Înscrie-te acum!",
+		"en" => "Get started now!"
+	),
 	"ac" => array(
 		"ro" => "Aer-condiționat",
 		"en" => "Air-conditioning"
@@ -30,6 +34,10 @@ $lang = array(
 	//C
 	//D
 	//E
+	"email" => array(
+		"ro" => "Email:",
+		"en" => "Email:"
+	),
 	//F
 	//G
 	//H
@@ -101,15 +109,53 @@ $lang = array(
 		"ro" => "Poți adăuga ușor întrerupătoare pentru fiecare cameră din casa ta<br/>și să urmărești starea lor",
 		"en" => "You can easily add switch to each room of your house<br/> and control their state"
 	),
-	"log_in" => array(
-		"ro" => "Înscrie-te acum!",
-		"en" => "Get started now!"
+	"login" => array(
+		"ro" => "Logare",
+		"en" => "Login"
 	),
+
 	//M
 	//N
+
+	"name" => array(
+		"ro" => "Nume:",
+		"en" => "Name:"
+	),
 	//O
 	//P
+	"password" => array(
+		"en" => "Password:",
+		"ro" => "Parola:"
+	),
+	"password_conf" => array(
+		"en" => "Confirm password:",
+		"ro" => "Confirma parola:"
+	),
 	//R
+	"realtime" => array(
+		"ro" => "Timp real",
+		"en" => "Realtime"
+	),
+	"realtime_add_temp" => array(
+		"ro" => "Adaugă grafic de temperatură!",
+		"en" => "Add termperature chart!"
+	),
+	"realtime_add_humidity" => array(
+		"ro" => "Adaugă grafic de umiditate!",
+		"en" => "Add termperature humidity!"
+	),
+	"realtime_description" => array(
+		"ro" => "Folosește butoanele ca să adaugi grafice de temperatură<br/> și de umiditate! Detectează în timp real <br/>parametrii din casa ta!",
+		"en" => "Use the buttons to add temperature and humidity<br/> chart! Follow their realtime value in your house!"
+	),
+	"realtime_socket_name" => array(
+		"ro" => "Introduceți numele socket-ului:",
+		"en" => "Insert the name of the socket:"
+	),
+	"remember_me" => array(
+		"ro" => "Ține-mă minte!",
+		"en" => "Remember me!"
+	),
 	//S
 	"security" => array(
 		"ro" => "Securitate",
@@ -135,6 +181,14 @@ $lang = array(
 	"settings_sign_out" => array(
 		"ro" => "Delogare",
 		"en" => "Log out"
+	),
+	"signup" => array(
+		"ro" => "Înscriere",
+		"en" => "Sign up"
+	),
+	"submit" => array(
+		"ro" => "Afirma",
+		"en" => "Submit"
 	),
 	//T
 	"temperature" => array(

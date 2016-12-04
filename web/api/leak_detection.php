@@ -1,6 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
+  @session_start();
 
     $name = $_POST["name"];
     $min = $_POST["min"];
@@ -43,7 +44,8 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS LEAK_DETECTION_TB
-      (NAME           TEXT  PRIMARY KEY   NOT NULL,
+      (ID   INTEGER NOT NULL,
+      NAME           TEXT  PRIMARY KEY   NOT NULL,
       MIN        CHAR(50)    NOT NULL,
       MAX        CHAR(50)    NOT NULL,
       LOW        CHAR(50)    NOT NULL,
@@ -62,8 +64,8 @@ EOF;
 
    if ($data["name"] != NULL){
    $sql =
-      "INSERT OR REPLACE INTO LEAK_DETECTION_TB (NAME,MIN, MAX, LOW, HIGH, VALUE) "
-      ." VALUES ('".$data["name"]."','".$data["min"]."','".$data["max"]."', '".$data["low"]."', '".$data["high"]."', '".$data["value"]."' )";
+      "INSERT OR REPLACE INTO LEAK_DETECTION_TB (ID,NAME,MIN, MAX, LOW, HIGH, VALUE) "
+      ." VALUES (".$_SESSION["usrID"].",'".$data["name"]."','".$data["min"]."','".$data["max"]."', '".$data["low"]."', '".$data["high"]."', '".$data["value"]."' )";
  	 }
     else {
       $response["status"] = "error";

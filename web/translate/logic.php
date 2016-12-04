@@ -1,5 +1,5 @@
-
 <?php
+@session_start();
 include __DIR__."/translations.php";
 function trans($id) {
 	global $lang;
@@ -11,7 +11,7 @@ function etrans($id) {
 }
 
 function getCurrentLanguage() {
-	if(isset($_SESSION["crtLang"])) {
+	if(isset($_SESSION["crtLang"])) {		
 		$crtLang = $_SESSION["crtLang"];
 	}
 	else {

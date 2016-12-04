@@ -14,6 +14,7 @@ $(function(){
             url: "/api/security.php",
             data: obj,
             success: function(data) {
+                            console.log(data);
 
             var response = JSON.parse(data);
 
@@ -40,7 +41,7 @@ function loadSecurity(){
             url: "/api/refresh.php",
             data: {data:jsonArr},
             success: function(data) {
-
+            console.log(data);
             var response = JSON.parse(data);
 
             if(response["status"] == "success") {
@@ -52,6 +53,6 @@ function loadSecurity(){
             else {
                 alert(response["reason"]);
             }
-          }
-      });
-	}
+        }
+    });
+}

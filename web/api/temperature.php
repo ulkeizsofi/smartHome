@@ -2,6 +2,7 @@
 	
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
+  @session_start();
 	$response = array();
 	$temperature = $_POST["temperature"];
 
@@ -29,7 +30,8 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS HVAC_TB
-      (NAME           TEXT  PRIMARY KEY   NOT NULL,
+      (ID   INTEGER   NOT NULL,
+      NAME           TEXT  PRIMARY KEY   NOT NULL,
       STATE        CHAR(50));
 EOF;
 	//check if success
@@ -44,8 +46,8 @@ EOF;
 
    if ($temperature){
    $sql =
-      "INSERT OR REPLACE INTO HVAC_TB (NAME,STATE) "
-      ." VALUES ('temperature','".$temperature."' )";
+      "INSERT OR REPLACE INTO HVAC_TB (ID,NAME,STATE) "
+      ." VALUES (".$_SESSION["usrID"].",'temperature','".$temperature."' )";
   }
   else{
        $response["status"] = "error";

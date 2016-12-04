@@ -16,7 +16,14 @@ function createButton(name){
 	var btn = document.createElement("A");
 	btn.className = "btn btn-circle btn-primary";
 	btn.innerHTML = name;
+	btn.id = name;
 	div.appendChild(btn);
+	var del = document.createElement("A");
+	del.className = "btn btn-circle btn-primary";
+	del.innerHTML = "X";
+	del.onclick = delete_button;
+	del.id = name;
+	div.appendChild(del);
 	document.getElementById("button_area").appendChild(div);
 	console.log(document.getElementById("button_area"));
 }
@@ -61,3 +68,24 @@ function loadIndoorPos(){
           }
       });
 	}
+
+function delete_button(){
+	var id = $(this).attr('id');
+	console.log(id);
+    var json = {"table_name":"indoor_pos_tb","name":id};
+    $.ajax({
+        type:"POST",
+        url:"/api/delete.php",
+        data: json,
+        success: function(data){
+            var response = JSON.parse(data);
+            if(response["status"] == "success") {
+                location.reload();
+            }
+            else {
+                alert(response["reason"]);
+            }
+        }
+    });
+}
+

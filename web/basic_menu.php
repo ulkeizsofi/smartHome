@@ -7,6 +7,7 @@
 		  <a href="index.php?page=security"><?php etrans("security"); ?></a>
 		  <a href="index.php?page=leak_detection"><?php etrans("leak_detection"); ?></a>
 		  <a href="index.php?page=indoor_positioning"><?php etrans("indoor_positioning"); ?></a>
+		  <a href="index.php?page=realtime"><?php etrans("realtime"); ?></a>
 		  <a href="index.php?page=logout"><?php etrans("settings_sign_out"); ?></a>
 	</div>
 

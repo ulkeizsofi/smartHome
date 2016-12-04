@@ -1,6 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
+   @session_start();
 	$response = array();
 
 	$name = $_POST["name"];
@@ -28,7 +29,7 @@
       //echo "Opened database successfully\n";
    }	
 
-   $sql ="DELETE FROM ".$table_name." WHERE NAME = \"".$name."\"";
+   $sql ="DELETE FROM ".$table_name." WHERE NAME = \"".$name."\" AND ID = ".$_SESSION["usrID"];
    //echo $sql;
 
 	//check if success

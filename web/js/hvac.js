@@ -150,6 +150,7 @@ function loadHvac(){
             url: "/api/refresh.php",
             data: {data:jsonArr},
             success: function(data) {
+                console.log(data);
             var response = JSON.parse(data);
 
             if(response["status"] == "success") {

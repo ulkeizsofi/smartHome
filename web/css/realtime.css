@@ -1,0 +1,20 @@
+.btn.temp{
+	padding: 30px;
+	position: absolute;
+	left: 25%;
+	/*top:50%;*/
+}
+.btn.humid{
+	padding: 30px;
+	position: absolute;
+	left: 25%;
+	/*top:50%;*/
+}
+
+div.temp{
+	height: 200px;
+}
+
+div.humid{
+	height: 200px;
+}

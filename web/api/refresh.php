@@ -1,6 +1,8 @@
 <?php
+@session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
+	@session_start();
 	$ids = json_decode($_POST["data"]);
 	$table_name = array_shift($ids);
 
@@ -27,20 +29,21 @@
 
 
 	if ($ids[0] == "*"){
-			$sql = "select * from ".$table_name." order by name asc";
+			$sql = "select * from ".$table_name." where ID = ".$_SESSION["usrID"]." order by name asc";
 			$ret = $db->query($sql);
 			if ($ret){
 	    		if ($table_name == "leak_detection_tb"){
 					while ($row = $ret->fetchArray()) {
-	    				$list = array(
-	    						"MIN" => $row["MIN"],
-	    						"MAX" => $row["MAX"],
-	    						"LOW" => $row["LOW"],
-	    						"HIGH" => $row["HIGH"],
-								"VALUE" => $row["VALUE"]
+		    				$list = array(
+		    						"MIN" => $row["MIN"],
+		    						"MAX" => $row["MAX"],
+		    						"LOW" => $row["LOW"],
+		    						"HIGH" => $row["HIGH"],
+									"VALUE" => $row["VALUE"]
 
-	    					); 
-	    				$response[$row["NAME"]] = $list;
+		    					); 
+		    				$response[$row["NAME"]] = $list;
+	    				
 	    			}
 	    		}
 	    		else{
@@ -51,21 +54,23 @@
 			}
 	}
 	else{
+		$ret = 1;
 		foreach($ids as $id){  
-		   	$sql = "select state from ".$table_name." where Name=\"".$id."\"";
+		   	$sql = "select state from ".$table_name." where Name=\"".$id."\" and ID = ".$_SESSION["usrID"];
 		  	$ret = $db->querySingle($sql);
-
+		  	console.log("ret" + $ret);
 		   if($ret == NULL){
-		      $response["status"] = "error";
-		      $response["reason"] = $id." entry not found";
-				echo json_encode($response);
-				die();
-		   } 
-		   $response["$id"] = $ret;
+		      $response["$id"] = "0";
+		     }		   
+		    else{
+
+		   		$response["$id"] = $ret;
+		    } 
+		
 		}
 	}
    $db->close();
-   //s$response["status"] = "error";
+  
 
 	echo json_encode($response);
 

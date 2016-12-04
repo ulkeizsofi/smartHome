@@ -1,6 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
+  @session_start();
 
     $name = $_POST["name"];
     $state = $_POST["state"];
@@ -45,7 +46,8 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS LIGHTING_TB
-      (NAME           TEXT  PRIMARY KEY   NOT NULL,
+      (ID   INTEGER NOT NULL,
+      NAME           TEXT  PRIMARY KEY   NOT NULL,
       STATE        CHAR(50));
 EOF;
 	//check if success
@@ -60,8 +62,8 @@ EOF;
 
    if ($data["name"] != NULL){
    $sql =
-      "INSERT OR REPLACE INTO LIGHTING_TB (NAME,STATE) "
-      ." VALUES ('".$data["name"]."','".$data["state"]."' )";
+      "INSERT OR REPLACE INTO LIGHTING_TB (ID,NAME,STATE) "
+      ." VALUES (".$_SESSION["usrID"].",'".$data["name"]."','".$data["state"]."' )";
  	 }
     else {
       $response["status"] = "error";

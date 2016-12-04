@@ -1,5 +1,5 @@
 <?php
-	
+	@session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 0);
 	$response = array();
@@ -35,7 +35,8 @@
    
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS HVAC_TB
-      (NAME           TEXT  PRIMARY KEY   NOT NULL,
+      (ID   INTEGER   NOT NULL,
+      NAME           TEXT   NOT NULL,
       STATE        CHAR(50));
 EOF;
 	//check if success
@@ -50,8 +51,8 @@ EOF;
 
    if ($data["switch"] && $data["state"] !== NULL){
    $sql =
-      "INSERT OR REPLACE INTO HVAC_TB (NAME,STATE) "
-      ." VALUES ('".$data["switch"]."','".$data["state"]."' )";
+      "INSERT OR REPLACE INTO HVAC_TB (ID,NAME,STATE) "
+      ." VALUES (".$_SESSION["usrID"].",'".$data["switch"]."','".$data["state"]."' )";
  	 }
     else {
       $response["status"] = "error";
@@ -60,8 +61,6 @@ EOF;
       echo json_encode($response);
       die();
     }
-
-  //echo $sql;
 
   $ret = $db->exec($sql);
    if(!$ret){
