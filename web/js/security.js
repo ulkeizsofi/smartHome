@@ -19,7 +19,7 @@ $(function(){
             var response = JSON.parse(data);
 
             if(response["status"] == "success") {
-               alert(response["status"]);           
+               alert("Success! You activated the security system!");           
             }
             else {
                 alert(response["reason"]);

@@ -82,6 +82,9 @@ function updateChartHumid(value){
 function drawChartTemp(){
 	try{
 		var socket_name = prompt("Socket name:","ws://IP:PORT/");
+		if (socket_name != null){
+				$(this).hide();
+		}
 		var websocket = new WebSocket(socket_name);
 		websocket.onmessage = function (e){
 		updateChartTemp(parseFloat(e.data));
@@ -98,6 +101,9 @@ function drawChartTemp(){
 function drawChartHumid(){
 	try{
 		var socket_name = prompt("Socket name:","ws://IP:PORT/");
+		if (socket_name != null){
+				$(this).hide();
+		}
 		var websocket = new WebSocket(socket_name);
 		websocket.onmessage = function (e){
 		updateChartHumid(parseFloat(e.data));
@@ -109,28 +115,16 @@ function drawChartHumid(){
   	}
 }
 
-function btnClickRealTimeTemp(){
-	$(this).hide();
-	drawChartTemp();
-}
-
-function btnClickRealTimeHumid(){
-	$(this).hide();
-	drawChartHumid();
-}
-
 function createButtonTemp(){
 	var btn = $("<button>").attr("class","btn btn-primary temp");
 	btn.html("Add termperature chart!");
-	btn.on("click",btnClickRealTimeTemp);
-	console.log(btn);
+	btn.on("click",drawChartTemp);
 	$("#tempChart.temp").append(btn);
 }
 
 function createButtonHumid(){
 	var btn = $("<button>").attr("class","btn btn-primary humid");
 	btn.html("Add humidity chart!");
-	btn.on("click",btnClickRealTimeHumid);
-	console.log(btn);
+	btn.on("click",drawChartHumid);
 	$("#humidChart.humid").append(btn);
 }

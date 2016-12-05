@@ -45,9 +45,29 @@ EOF;
    } 
 
    if ($temperature){
+    $sql = "SELECT * FROM HVAC_TB WHERE ID=".$_SESSION["usrID"]." AND NAME='temperature'";
+    //echo $sql;
+    $ret = $db->exec($sql);
+    if(!$ret){
+      //echo "RET" + $ret;
+
    $sql =
-      "INSERT OR REPLACE INTO HVAC_TB (ID,NAME,STATE) "
+      "INSERT INTO HVAC_TB (ID,NAME,STATE) "
       ." VALUES (".$_SESSION["usrID"].",'temperature','".$temperature."' )";
+      //echo "insert";
+    }
+    else{
+      $sql =
+      " UPDATE HVAC_TB set STATE= ".$temperature." WHERE ID = ".$_SESSION["usrID"]." AND NAME = 'temperature'";
+      //echo $sql;
+    }
+    $ret = $db->exec($sql);
+    if(!$ret){
+      $response["status"] = "error";
+      $response["reason"] = "cannot insert or replace";
+      echo json_encode($response);
+      die();
+    }
   }
   else{
        $response["status"] = "error";
