@@ -1,2 +1,0 @@
-# smartHome
-smartHome webpage
